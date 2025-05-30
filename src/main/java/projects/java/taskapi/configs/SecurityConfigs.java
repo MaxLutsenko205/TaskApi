@@ -32,8 +32,8 @@ public class SecurityConfigs {
                         auth -> auth
                                 .requestMatchers(
                                         "/api/auth/**",
-                                        "/v3/api-docs/**",        // 🔴 Добавить это
-                                        "/swagger-ui/**",         // уже есть
+                                        "/swagger-ui/**",
+                                        "/v3/api-docs/**",
                                         "/swagger-ui.html"
                                 ).permitAll()
                                 .anyRequest().authenticated()

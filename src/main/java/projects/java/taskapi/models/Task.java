@@ -20,7 +20,7 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotNull(message = "title не может быть пустым")
     private String title;
 
     private String description;

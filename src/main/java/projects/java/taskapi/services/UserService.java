@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import projects.java.taskapi.dtos.AuthRequest;
 import projects.java.taskapi.dtos.AuthResponse;
 import projects.java.taskapi.dtos.RefreshTokenRequest;
+import projects.java.taskapi.exceptions.TokenValidationException;
 import projects.java.taskapi.models.Role;
 import projects.java.taskapi.models.User;
 import projects.java.taskapi.repositories.UserRepository;
@@ -61,11 +62,11 @@ public class UserService {
                 .orElseThrow(() -> new EntityNotFoundException(String.format("Пользователь с email: %s не найден", email)));
 
         if(!refreshToken.equals(user.getRefreshToken())){
-            throw new RuntimeException("Рефреш токен не совпадает");
+            throw new TokenValidationException("Рефреш токен не совпадает");
         }
 
         if (!jwtService.isTokenValid(refreshRequest.getRefreshToken(), user)){
-            throw new RuntimeException("Токен не валидный или вышел срок годности");
+            throw new TokenValidationException("Токен не валидный или вышел срок годности");
         }
 
         String accessToken = jwtService.generateAccessToken(user);

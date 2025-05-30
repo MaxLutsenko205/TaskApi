@@ -27,11 +27,11 @@ public class User implements UserDetails {
     private Long id;
 
     @Email(message = "некорректный email")
-    @NotNull
+    @NotNull(message = "email не может быть пустым")
     @Column(unique = true)
     private String email;
 
-    @NotNull
+    @NotNull(message = "пароль не может быть пустым")
     private String password;
 
     private String refreshToken;

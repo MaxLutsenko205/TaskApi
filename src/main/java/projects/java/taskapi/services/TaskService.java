@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import projects.java.taskapi.dtos.TaskDto;
+import projects.java.taskapi.models.Status;
 import projects.java.taskapi.models.Task;
 import projects.java.taskapi.models.User;
 import projects.java.taskapi.repositories.TaskRepository;
@@ -34,6 +35,11 @@ public class TaskService {
     public List<Task> getUserTasks(UserDetails userDetails) {
         User user = getUserByEmail(userDetails.getUsername());
         return taskRepository.findByUser(user);
+    }
+
+    public List<Task> getUserTasksByStatus(UserDetails userDetails, Status status) {
+        User user = getUserByEmail(userDetails.getUsername());
+        return taskRepository.findByUserAndStatus(user, status);
     }
 
     public Task getUserTaskById(UserDetails userDetails, Long taskId) {
