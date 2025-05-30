@@ -23,7 +23,7 @@ REST API для управления задачами с поддержкой а
 
 ```bash
 git clone https://github.com/MaxLutsenko205/TaskApi
-cd task-api
+cd TaskApi
 ```
 
 #### 2. Создать .env файл в корне проекта:
