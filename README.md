@@ -22,7 +22,7 @@ REST API для управления задачами с поддержкой а
 #### 1. Склонировать репозиторий
 
 ```bash
-git clone https://github.com/your-username/task-api.git
+git clone https://github.com/MaxLutsenko205/TaskApi
 cd task-api
 ```
 
